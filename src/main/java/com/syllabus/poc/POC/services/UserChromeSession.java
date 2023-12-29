@@ -64,7 +64,7 @@ public class UserChromeSession implements Browser {
 		if (!webDriver.findElements(By.tagName("mat-error")).isEmpty()) {
 			log.info("Web Search complete, browser authenticated successfully");
 		}else {
-			throw new RuntimeException("Browser ckeck failed");
+			throw new RuntimeException("Browser check failed");
 		}
 	}
 	
