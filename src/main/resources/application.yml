@@ -1,3 +1,5 @@
 #url
 poc:
-  base-url: https://www.vermittlerregister.info/suche/erlaubnisinhaber
+  server:
+    web: https://www.vermittlerregister.info/
+    backend: https://www.vermittlerregister.info/suche/erlaubnisinhaber?registrierungsnummer=
