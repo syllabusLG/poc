@@ -1,7 +1,14 @@
 package com.syllabus.poc.POC.services;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
+import com.mongodb.MongoBulkWriteException;
+import org.bson.Document;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
@@ -9,6 +16,9 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @Slf4j
 public class PocServiceImpl implements PocService {
+
+	@Autowired
+	private MongoTemplate mongoTemplate;
 	
 	Browser browser;
 	
@@ -25,7 +35,13 @@ public class PocServiceImpl implements PocService {
 	private void extractData(String seedId) {
 		String seedJson = browser.getSeedAsJson(seedId);
 		log.info("------ Seed JSON : {}", seedJson);
-	}
+		if (seedJson.startsWith("{\"register\":")){
+			//insert in mongo
+			mongoTemplate.insert(Document.parse(seedJson),"seed");
+			log.info("------ Seed JSON : {}", seedJson);
 
+		}
+
+	}
 
 }

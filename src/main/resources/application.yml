@@ -3,3 +3,7 @@ poc:
   server:
     web: https://www.vermittlerregister.info/
     backend: https://www.vermittlerregister.info/suche/erlaubnisinhaber?registrierungsnummer=
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/seed-poc
